@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apresentação · Emcosta Digital</title>
+  <link rel="icon" href="favicon.png">
+  <link href="style.css" rel="stylesheet">
+  <script src="script.js"></script>
+</head>
+
+<body x-data="{ page: 'home', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
+  x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  :class="{'b eh': darkMode === true}">
+  <!-- ===== Header Start ===== -->
+  <header class="g s r vd ya cj" :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
+    @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false">
+    <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
+      <div class="vd to/4 tc wf yf">
+        <a href="home.html">
+          <img class="om" src="images/logo-light.png" style="width: 110%;" alt="Logo Light" />
+          <img class="xc nm" src="images/logo-dark.png" alt="Logo Dark" />
+        </a>
+
+        <!-- Hamburger Toggle BTN -->
+        <button class="po rc" @click="navigationOpen = !navigationOpen">
+          <span class="rc i pf re pd">
+            <span class="du-block h q vd yc">
+              <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl fl" :class="{ 'ue qr': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl gl" :class="{ 'ue hl': !navigationOpen }"></span>
+            </span>
+            <span class="du-block h q vd yc lf">
+              <span class="rc eh um tg ml jl el h na r ve yc" :class="{ 'sd dl': !navigationOpen }"></span>
+              <span class="rc eh um tg ml jl qr h s pa vd rd" :class="{ 'sd rr': !navigationOpen }"></span>
+            </span>
+          </span>
+        </button>
+        <!-- Hamburger Toggle BTN -->
+      </div>
+
+      <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
+        <nav>
+          <ul class="tc _o sf yo cg ep">
+            <li><a href="home.html" class="xl" :class="{ 'mk': page === 'home' }">Inicio</a></li>
+            <li><a href="home.html#resumo" class="xl">Resumo</a></li>
+            <li class="c i" x-data="{ dropdown: false }">
+              <a href="" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
+                :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
+                Informações
+
+                <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path
+                    d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                </svg>
+              </a>
+
+              <!-- Dropdown Start -->
+              <ul class="a" :class="{ 'tc': dropdown }">
+                <li><a href="#planejamento" class="xl" :class="{ 'mk': page === 'blog-grid' }">Planejamento</a></li>
+                <li><a href="#vantagens" class="xl" :class="{ 'mk': page === 'blog-single' }">Vantagens</a></li>
+                <li><a href="#info" class="xl" :class="{ 'mk': page === 'signin' }">Info</a></li>
+                <li><a href="#faq" class="xl" :class="{ 'mk': page === 'signup' }">FAQ</a></li>
+                <li><a href="#orçamento" class="xl" :class="{ 'mk': page === '404' }">Orçamento</a></li>
+              </ul>
+              <!-- Dropdown End -->
+            </li>
+            <li><a href="home.html#suporte" class="xl">Suporte</a></li>
+          </ul>
+        </nav>
+
+        <div class="tc wf ig pb no">
+          <div class="pc h io pa ra" :class="navigationOpen ? '!-ud-visible' : 'd'">
+            <label class="rc ab i">
+              <input type="checkbox" :value="darkMode" @change="darkMode = !darkMode" class="pf vd yc uk h r za ab" />
+              <!-- Icon Sun -->
+              <svg :class="{ 'wn' : page === 'home', 'xh' : page === 'home' && stickyMenu }" class="th om" width="25"
+                height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12.0908 18.6363C10.3549 18.6363 8.69 17.9467 7.46249 16.7192C6.23497 15.4916 5.54537 13.8268 5.54537 12.0908C5.54537 10.3549 6.23497 8.69 7.46249 7.46249C8.69 6.23497 10.3549 5.54537 12.0908 5.54537C13.8268 5.54537 15.4916 6.23497 16.7192 7.46249C17.9467 8.69 18.6363 10.3549 18.6363 12.0908C18.6363 13.8268 17.9467 15.4916 16.7192 16.7192C15.4916 17.9467 13.8268 18.6363 12.0908 18.6363ZM12.0908 16.4545C13.2481 16.4545 14.358 15.9947 15.1764 15.1764C15.9947 14.358 16.4545 13.2481 16.4545 12.0908C16.4545 10.9335 15.9947 9.8236 15.1764 9.00526C14.358 8.18692 13.2481 7.72718 12.0908 7.72718C10.9335 7.72718 9.8236 8.18692 9.00526 9.00526C8.18692 9.8236 7.72718 10.9335 7.72718 12.0908C7.72718 13.2481 8.18692 14.358 9.00526 15.1764C9.8236 15.9947 10.9335 16.4545 12.0908 16.4545ZM10.9999 0.0908203H13.1817V3.36355H10.9999V0.0908203ZM10.9999 20.8181H13.1817V24.0908H10.9999V20.8181ZM2.83446 4.377L4.377 2.83446L6.69082 5.14828L5.14828 6.69082L2.83446 4.37809V4.377ZM17.4908 19.0334L19.0334 17.4908L21.3472 19.8046L19.8046 21.3472L17.4908 19.0334ZM19.8046 2.83337L21.3472 4.377L19.0334 6.69082L17.4908 5.14828L19.8046 2.83446V2.83337ZM5.14828 17.4908L6.69082 19.0334L4.377 21.3472L2.83446 19.8046L5.14828 17.4908ZM24.0908 10.9999V13.1817H20.8181V10.9999H24.0908ZM3.36355 10.9999V13.1817H0.0908203V10.9999H3.36355Z"
+                  fill="" />
+              </svg>
+              <!-- Icon Sun -->
+              <img class="xc nm" src="images/icon-moon.svg" alt="Moon" />
+            </label>
+          </div>
+
+          <a href="index.html" :class="{ 'nk yl' : page === 'home', 'ok' : page === 'home' && stickyMenu }"
+            class="ek pk xl">Sair</a>
+          <a target="_blank" href="https://wa.me/5514991878699?text=Preciso%20de%20atendimento."
+            :class="{ 'hh/[0.15]' : page === 'home', 'sh' : page === 'home' && stickyMenu }"
+            class="lk gh dk rg tc wf xf _l gi hi">Atendimento Online</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Header End ===== -->
+
+  <main>
+    <!-- ===== Hero Start ===== -->
+    <section class="gj do ir hj sp jr i pg">
+      <!-- Hero Images -->
+      <div class="xc fn zd/2 2xl:ud-w-187.5 bd 2xl:ud-h-171.5 h q r">
+        <img src="images/shape-01.svg" alt="shape" class="xc 2xl:ud-block h t -ud-left-[10%] ua" />
+        <img src="images/shape-02.svg" alt="shape" class="xc 2xl:ud-block h u p va" />
+        <img src="images/shape-03.svg" alt="shape" class="xc 2xl:ud-block h v w va" />
+        <img src="images/shape-04.svg" alt="shape" class="h q r" />
+        <img src="images/hero.png" alt="Woman" class="h q r ua" />
+      </div>
+
+      <!-- Hero Content -->
+      <div class="bb ze ki xn 2xl:ud-px-0">
+        <div class="tc _o">
+          <div class="responsive animate_left jn/2">
+            <h1 class="fk vj zp or kk wm wb"
+              style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;">Apresentação do
+              Projeto Casa da Fruta | Emcosta Digital</h1>
+            <p class="fq">
+              Somos uma empresa do ramo Marketing Digital, Desenvolvimento e Design. Ajudamos desde pequenos a grandes
+              negócios a se destacarem na Internet. <br><br>
+              <b>Se você chegou até aqui, parabéns! Isso significa que falta pouco para seu negócio receber o DNA da
+                Emcosta Digital e começar a evoluir.</b>
+            </p>
+
+            <div class="tc tf yo zf mb">
+              <a target="_blank"
+                href="https://drive.google.com/drive/folders/1SmwRD6IQgXJxLg9yD4zG3Tq3QUb1-pjY?usp=share_link"
+                class="ek jk lk gh gi hi rg ml il vc _d _l">Acessar Drive</a>
+
+              <span class="tc sf">
+                <a href="#" class="inline-block ek xj kk wm"> Projeto: Casa da Fruta </a>
+                <span class="inline-block">Atualização: Habilitamos o botão 'Ver Status'</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Hero End ===== -->
+
+    <!-- ===== Small Features Start ===== -->
+    <section id="features">
+      <div class="bb ze ki yn 2xl:ud-px-12.5">
+        <div class="tc uf zo xf ap zf bp mq">
+          <!-- Small Features Item -->
+          <div class="animate_top kn to/3 tc cg oq">
+            <div class="tc wf xf cf ae cd rg mh">
+              <lord-icon src="https://cdn.lordicon.com/bhfjfgqz.json" trigger="loop-on-hover" delay="500"
+                colors="primary:#ffffff" style="width:50px;height:50px">
+              </lord-icon>
+            </div>
+            <div>
+              <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2em; letter-spacing: -0.2rem;"
+                class="ek yj go kk wm xb">O que foi solicitado:</h4>
+              <p>Veja ao lado os interesses informados à nossa equipe na última reunião com o cliente.</p>
+            </div>
+          </div>
+
+          <!-- Small Features Item -->
+          <div class="animate_top kn to/3 tc cg oq">
+            <div class="tc wf xf cf ae cd rg nh">
+              <lord-icon src="https://cdn.lordicon.com/wluyqhxh.json" trigger="loop-on-hover" delay="500"
+                colors="primary:#ffffff" style="width:50px;height:50px">
+              </lord-icon>
+            </div>
+            <div>
+              <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2em; letter-spacing: -0.2rem;"
+                class="ek yj go kk wm xb">E-Commerce</h4>
+              <p>"O cliente soliciou a criação de um site para vendas."</p>
+            </div>
+          </div>
+
+          <!-- Small Features Item -->
+          <div class="animate_top kn to/3 tc cg oq">
+            <div class="tc wf xf cf ae cd rg oh">
+              <lord-icon src="https://cdn.lordicon.com/hwuyodym.json" trigger="loop-on-hover" delay="500"
+                colors="primary:#ffffff" style="width:50px;height:50px">
+              </lord-icon>
+            </div>
+            <div>
+              <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2em; letter-spacing: -0.2rem;"
+                class="ek yj go kk wm xb">Identidade Visual</h4>
+              <p>"O cliente solicitou a criação de uma nova Identidade Visual."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Small Features End ===== -->
+
+    <!-- ===== IDV Start ===== -->
+    <section id="resumo" class="ji gp uq 2xl:ud-py-35 pg">
+      <div class="bb ze ki xn wq">
+        <div class="tc wf gg qq">
+          <!-- About Images -->
+          <div class="animate_left xc gn gg jn/2 i">
+            <div>
+              <img src="images/shape-05.svg" alt="Shape" class="h -ud-left-5 x" />
+              <img src="images/about-01.png" alt="About" class="ib" />
+              <img src="images/about-02.png" alt="About" />
+            </div>
+            <div>
+              <img src="images/shape-06.svg" alt="Shape" />
+              <img src="images/about-03.png" alt="About" class="ob gb" />
+              <img src="images/shape-07.svg" alt="Shape" class="bb" />
+            </div>
+          </div>
+
+          <!-- About Content -->
+          <div class="responsive animate_right jn/2">
+            <h4 class="ek yj mk gb">Primeiros Passos</h4>
+            <h2 class="fk vj zp pr kk wm qb"
+              style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;">Atualizando sua
+              marca, criando sua nova aparência.</h2>
+            <p class="uo">Antes de iniciar o desenvolvimento da sua nova estrutura de vendas Online, precisamos criar
+              sua
+              nova marca. Após a finalização desta, teremos um design
+              completo para inserir em seu novo site e perfis sociais.
+            </p>
+
+            <a href="https://www.youtube.com/watch?v=ohuk5pmMA7Y&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=4"
+              width="640" height="480" allow="autoplay" data-fslightbox class="vc wf hg mb">
+              <span class="tc wf xf be dd rg i gh ua">
+                <span class="nf h vc yc vd rg gh qk -ud-z-1"></span>
+                <img src="images/icon-play.svg" alt="Play" />
+              </span>
+              <span class="kk">Ver etapas</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== IDV End ===== -->
+
+    <!-- ===== Reference Start ===== -->
+    <section class="i pg ji gp uq">
+      <!-- Bg Shapes -->
+      <span class="rc h s r vd fd/5 fh rm"></span>
+      <img src="images/shape-08.svg" alt="Shape Bg" class="h q r" />
+      <img src="images/shape-09.svg" alt="Shape" class="of h y z/2" />
+      <img src="images/shape-10.svg" alt="Shape" class="h _ aa" />
+      <img src="images/shape-11.svg" alt="Shape" class="of h m ba" />
+
+      <!-- Section Title Start -->
+      <div
+        x-data="{ sectionTitle: `Transformamos referência em inspiração.`, sectionTitleText: `Pesquisamos as tendências visuais de outras marcas do mesmo mercado que o seu, assim poderemos desenvolver um produto adequado ao padrão do seu nicho.`}">
+        <div class="responsive animate_top bb ze rj ki xn vq">
+          <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+            x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b">
+          </h2>
+          <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
+        </div>
+
+
+      </div>
+      <!-- Section Title End -->
+
+      <div class="bb ze i va ki xn xq jb jo">
+        <div class="wc qf pn xo gg cp">
+          <!-- References Item -->
+          <div class="animate_top rj">
+            <div class="c i pg z-1">
+              <img class="vd" src="images/team-01.png" alt="Team" />
+
+              <div class="ef im nl il">
+                <span class="h -ud-left-5 -ud-bottom-21 rc de gd gh if wa"></span>
+                <span class="h s p rc vd hd mh va"></span>
+                <div class="h s p vd ij jj xa">
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2em; letter-spacing: -0.2rem;"
+              class="yj go kk wm ob zb">Inspiração de Logotipo</h4>
+            <p>Rede Oba Hortifrúti</p>
+          </div>
+
+          <!-- Reference Item -->
+          <div class="animate_top rj">
+            <div class="c i pg z-1">
+              <img class="vd" src="images/team-02.png" alt="Team" />
+
+              <div class="ef im nl il">
+                <span class="h -ud-left-5 -ud-bottom-21 rc de gd gh if wa"></span>
+                <span class="h s p rc vd hd mh va"></span>
+                <div class="h s p vd ij jj xa">
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2em; letter-spacing: -0.2rem;"
+              class="yj go kk wm ob zb">Paleta de Cores</h4>
+            <p>Verde, Laranja, Amarelo e Marrom</p>
+          </div>
+
+          <!-- Reference Item -->
+          <div class="animate_top rj">
+            <div class="c i pg z-1">
+              <img class="vd" src="images/team-03.png" alt="Team" />
+
+              <div class="ef im nl il">
+                <span class="h -ud-left-5 -ud-bottom-21 rc de gd gh if wa"></span>
+                <span class="h s p rc vd hd mh va"></span>
+                <div class="h s p vd ij jj xa">
+                </div>
+              </div>
+            </div>
+
+            <a target="_blank" href="https://www.obahortifruti.com.br">
+              <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2em; letter-spacing: -0.2rem;"
+                class="yj go kk wm ob zb">Inspiração de Website</h4>
+              <p>Rede Oba Hortifrúti</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Reference End ===== -->
+
+    <!-- ===== IDV Start ===== -->
+    <section class="ji gp uq 2xl:ud-py-35 pg">
+      <div class="bb ze ki xn wq">
+        <div class="tc wf gg qq">
+          <!-- About Content -->
+          <div class="responsive animate_right jn/2">
+            <h4 class="ek yj mk gb">Desenvolvendo sua loja Online.</h4>
+            <h2 class="fk vj zp pr kk wm qb"
+              style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;">Introduzindo a
+              criação do seu novo canal de vendas.</h2>
+            <p class="uo">Aperfeiçoando suas vendas, apresentamos a criação de um novo canal de comercialização. Estamos
+              desenvolvendo um site moderno e intuitivo, que se comunique eficazmente com seus clientes, exibindo todos
+              os diferenciais de seu negócio. <br><br> Com uma interface amigável, os clientes poderão finalizar seus
+              pedidos de
+              forma rápida e prática, diretamente pelo WhatsApp.
+            </p>
+            <br>
+            <button id="meuBotao">
+            <a target="" href="#"
+            class="lk gh dk rg tc wf xf _l gi hi">Ver Status</a></button>
+          </div>
+          <div class="animate_left xc gn gg jn/2 i">
+            <div>
+              <img src="images/shape-05.svg" alt="Shape" class="h -ud-left-5 x" />
+              <img src="images/about-01-1.png" alt="About" class="ib" />
+              <img src="images/about-02-2.png" alt="About" />
+            </div>
+            <div>
+              <img src="images/shape-06.svg" alt="Shape" />
+              <img src="images/about-03-3.png" alt="About" class="ob gb" />
+              <img src="images/shape-07.svg" alt="Shape" class="bb" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== IDV End ===== -->
+
+    <!-- ===== Services Start ===== -->
+    <section id="planejamento" class="lj tp kr">
+      <!-- Section Title Start -->
+      <div
+        x-data="{ sectionTitle: `Elementos do seu novo site de vendas:`, sectionTitleText: `Os recursos que serão incluídos no processo de criação da sua loja Online, foram escolhidos visando a performance e acessibilidade.`}">
+        <div class="responsive animate_top bb ze rj ki xn vq">
+          <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+            x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b">
+          </h2>
+          <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
+        </div>
+
+
+      </div>
+      <!-- Section Title End -->
+
+      <div class="bb ze ki xn yq mb en">
+        <div class="wc qf pn xo ng">
+          <!-- Service Item -->
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/rlizirgt.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px">
+            </lord-icon>
+            <h4 class="ek zj kk wm nb _b">Categorias e Filtros</h4>
+            <p>Produtos organizados por setores e filtros que permitem buscas específicas.</p>
+          </div>
+
+          <!-- Service Item -->
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/eanmttmw.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"> </lord-icon>
+            <h4 class="ek zj kk wm nb _b">Seções para Destaques</h4>
+            <p>Espaço para destacar produtos novos, especiais, em falta ou chamada para eventos.</p>
+          </div>
+
+          <!-- Service Item -->
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/udbbfuld.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">Grade de Produtos</h4>
+            <p>Itens organizados em grades, como loja virtual, simulando as prateleiras de seu comércio.</p>
+          </div>
+
+          <!-- Service Item -->
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/ehfubvwr.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">Página de Captação</h4>
+            <p>Páginas para captar informações de contato dos seus clientes, que poderão ser utilizas para o Marketing e
+              publicidade.</p>
+          </div>
+
+          <!-- Service Item -->
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/ncxoarcp.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">Página Institucional</h4>
+            <p>Páginas com informações sobre o comércio, descrições, trajetórias, meios de contatos e avisos ao cliente.
+            </p>
+          </div>
+
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/fcrbbplx.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">Banners Promocionais</h4>
+            <p>Banners para apresentar promoções, ações publicitárias, sorteios e eventos relacionados.</p>
+          </div>
+
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/lqsduwhb.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">Página de Checkout</h4>
+            <p>Página de finalização de pedidos que redirecionam o cliente direto para o WhatsApp da loja.</p>
+          </div>
+
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/qvbrkejx.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">Guias de Uso</h4>
+            <p>Espaço destinado aos clientes, para apresentação de dicas e guias de como usar e comprar pelo site.</p>
+          </div>
+
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/zvllgyec.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">Layout Responsivo</h4>
+            <p>Seu Website funcionará em dispositivos móveis ou com telas inferiores a de um computador, garantindo o
+              acesso a todos.</p>
+          </div>
+
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/xryjrepg.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">Seções Interativas</h4>
+            <p>Mostre marcas com quais você trabalha, Link para redes sociais, espaços para receitas e conteúdo ao
+              cliente.</p>
+          </div>
+
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/pkmkagva.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">FAQ e Chat</h4>
+            <p>Tire as dúvidas frequêntes de seus clientes, deixe avisos e faça um pré-atendimento direto da loja.</p>
+          </div>
+
+          <!-- Service Item -->
+          <div class="animate_top sg oi pi zq ml il am cn _m">
+            <lord-icon src="https://cdn.lordicon.com/zchxlapl.json" trigger="loop-on-hover" colors="primary:#16c72e"
+              delay="1000" style="width:50px;height:50px"></lord-icon>
+            <h4 class="ek zj kk wm nb _b">Domínio e Relatórios</h4>
+            <p>Um domínio direto torna sua busca mais fácil. Os relatórios te ajudarão a melhorar e a corrigir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Services End ===== -->
+
+    <!-- ===== CTA Start ===== -->
+    <section id="vantagens" class="i pg gh ji">
+      <!-- Bg Shape -->
+      <img class="h p q" src="images/shape-16.svg" alt="Bg Shape" />
+
+      <div class="bb ye i z-10 ki xn dr">
+        <div class="tc uf sn tn un gg">
+          <div class="responsive animate_left to/2">
+            <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+              class="fk vj zp pr lk ac">
+              Saiba mais sobre as vantagens dos serviços Emcosta.
+            </h2>
+            <p class="lk">
+              Veja a importância de possuir uma Identidade Visual e de ter uma Loja Online sob-medida para seu negócio e
+              entenda o porquê somos a melhor opção para suas necessidades.
+            </p>
+          </div>
+          <div class="animate_right bf">
+            <a target="_blank"
+              href="https://www.youtube.com/watch?v=5fEoTXdYxos&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=7"
+              class="vc ek kk hh rg ol il cm gi hi">
+              Vantagens do Design
+            </a>
+          </div>
+          <div class="animate_right bf">
+            <a target="_blank"
+              href="https://www.youtube.com/watch?v=Su5dZ-Tkjwg&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=6"
+              class="vc ek kk hh rg ol il cm gi hi">
+              Vatagens do E-commerce
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== CTA End ===== -->
+
+    <!-- ===== Projects Start ===== -->
+    <section id="info" class="pg pj vp mr oj wp nr">
+      <!-- Section Title Start -->
+      <div
+        x-data="{ sectionTitle: `Avisos e recomendações que nossa equipe organizou.`, sectionTitleText: `Existem algumas informações importates que você precisa saber a respeito deste ambiente e projeto.`}">
+        <div class="responsive animate_top bb ze rj ki xn vq">
+          <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+            x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b">
+          </h2>
+          <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
+        </div>
+
+
+      </div>
+      <!-- Section Title End -->
+
+      <div class="bb ze ki xn 2xl:ud-px-0 jb" x-data="{filterTab: 1}">
+        <!-- Porject Tab -->
+        <div class="projects-tab _e bb tc uf wf xf cg rg hh rm vk xm si ti fc">
+          <button data-filter=".prazos" @click="filterTab = 1" :class="{ 'gh lk' : filterTab === 1 }"
+            class="project-tab-btn ek rg ml il vi mi">
+            Prazos
+          </button>
+          <button data-filter=".termos" @click="filterTab = 2" :class="{ 'gh lk' : filterTab === 2 }"
+            class="project-tab-btn ek rg ml il vi mi">
+            Termos
+          </button>
+          <button data-filter=".manuais" @click="filterTab = 3" :class="{ 'gh lk' : filterTab === 3 }"
+            class="project-tab-btn ek rg ml il vi mi">
+            Manuais
+          </button>
+          <button data-filter=".manutencoes" @click="filterTab = 4" :class="{ 'gh lk' : filterTab === 4 }"
+            class="project-tab-btn ek rg ml il vi mi">
+            Manutenções
+          </button>
+        </div>
+
+        <!-- Projects item wrapper -->
+        <div class="projects-wrapper tc -ud-mx-5">
+          <div class="project-sizer"></div>
+
+          <!-- Project Item
+          <div class="project-item wi fb vd vo/3 digital ecommerce">
+            <div class="c i pg sg z-1">
+              <img src="images/TESTE.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 class="ek tj kk hc">Photo Retouching</h4>
+                <p>Branded Ecommerce</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" href="#">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 prazos">
+            <div class="c i pg sg z-1">
+              <img src="images/prazos1.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Tem dúvidas?</h4>
+                <p>Perguntar</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%20prazo%20de%20entrega%20do%20Logotipo.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 prazos">
+            <div class="c i pg sg z-1">
+              <img src="images/prazos3.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Tem dúvidas?</h4>
+                <p>Perguntar</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%20prazo%20de%20validade%20dessa%20apresentação.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 prazos">
+            <div class="c i pg sg z-1">
+              <img src="images/prazos4.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Tem dúvidas?</h4>
+                <p>Perguntar</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%20prazo%20de%20entrega%20do%20site.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 termos">
+            <div class="c i pg sg z-1">
+              <img src="images/termos1.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Informações Adicionais</h4>
+                <p>Saiba mais</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20os%20termos%20presentes%20em%20meu%20contrato.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 termos">
+            <div class="c i pg sg z-1">
+              <img src="images/termos2.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Sua Segurança</h4>
+                <p>Saiba mais</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%20termo%20para%20uso%20de%20imagens.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 termos">
+            <div class="c i pg sg z-1">
+              <img src="images/termos3.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Informações Adicionais</h4>
+                <p>Perguntar</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%20termo%20de%20confidencialidade%20da%20Emcosta.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 manuais">
+            <div class="c i pg sg z-1">
+              <img src="images/manuais3.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Seu contrato</h4>
+                <p>Ver detalhes</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%20meu%20contrato%20de%20serviço?">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 manuais">
+            <div class="c i pg sg z-1">
+              <img src="images/manuais2.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Aprenda a Usar</h4>
+                <p>Tenho dúvidas</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%20manual%20de%20uso%20do%20site.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 manuais">
+            <div class="c i pg sg z-1">
+              <img src="images/manuais1.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Guia de Atendimento</h4>
+                <p>Saiba mais</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%20guia%20de%20atendimento%20da%20loja.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 manutencoes">
+            <div class="c i pg sg z-1">
+              <img src="images/manutenção1.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Meu Logotipo</h4>
+                <p>Tenho dúvidas</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%20logotipo%20da%20minha%20loja%20Online.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 manutencoes">
+            <div class="c i pg sg z-1">
+              <img src="images/manutencao2.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Mudando o Estilo</h4>
+                <p>Quero alterações</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20o%Design%20da%20minha%20loja%20Online.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Item -->
+          <div class="project-item wi fb vd jn/2 to/3 manutencoes">
+            <div class="c i pg sg z-1">
+              <img src="images/manutenção3.png" alt="Project" />
+
+              <div class="h s r df nl kl im tc sf wf xf vd yc sg al hh/20 z-10">
+                <h4 style="font-family: 'DM Sans', sans-serif; font-size: 2.3em; letter-spacing: -0.2rem;"
+                  class="ek tj kk hc">Manutenção da Loja</h4>
+                <p>Tenho dúvidas</p>
+                <a class="c tc wf xf ie ld rg _g dh ml il ph jm km jc" target="_blank"
+                  href="https://wa.me/5514991878699?text=Gostaria%20de%20saber%20mais%20sobre%20a%20manuteção%20da%20minha%20loja%20Online.">
+                  <svg class="th lm ml il" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- ===== Projects End ===== -->
+
+    <!-- ===== Testimonials Start ===== -->
+    <section id="faq" class="hj rp hr">
+      <!-- Section Title Start -->
+      <div
+        x-data="{ sectionTitle: `Você pode encontrar algumas dúvidas:`, sectionTitleText: `Separamos algumas perguntas frequêntes de clientes com projetos semelhantes ao seu. Se não encontrar sua dúvida abaixo, entre em contato.`}">
+        <div class="responsive animate_top bb ze rj ki xn vq">
+          <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+            x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b">
+          </h2>
+          <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
+        </div>
+
+
+      </div>
+      <!-- Section Title End -->
+
+      <div class="bb ze ki xn ar">
+        <div class="animate_top jb cq">
+          <!-- Slider main container -->
+          <div class="swiper testimonial-01">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <lottie-player class="responsive-icon" src="https://assets10.lottiefiles.com/private_files/lf30_wc0lfj5g.json"
+                      background="transparent" speed="1"  hover loop
+                      autoplay></lottie-player>
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">O que é criação de identidade visual?</span>
+                          <span class="rc">(Começo) Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        A criação de identidade visual é o processo de desenvolvimento de elementos gráficos, como
+                        logotipos, cores, tipografia e layouts, que representam uma marca ou empresa de maneira
+                        consistente e coerente.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_wc0lfj5g.json"
+                      background="transparent" speed="1" style="width: 400px; height: 400px;" hover loop
+                      autoplay></lottie-player>
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">Por que é importante ter uma identidade visual forte?</span>
+                          <span class="rc">Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        Uma identidade visual forte ajuda a diferenciar sua marca ou empresa de seus concorrentes e a
+                        criar uma conexão emocional com seus clientes. Também ajuda a reforçar a confiança e a
+                        credibilidade da sua marca ou empresa.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_wc0lfj5g.json"
+                      background="transparent" speed="1" style="width: 400px; height: 400px;" hover loop
+                      autoplay></lottie-player>
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">O que é incluído em um pacote de criação de identidade
+                            visual?</span>
+                          <span class="rc">Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        Isso pode variar dependendo do pacote escolhido, mas geralmente inclui coisas como criação de
+                        logotipo, cartão de visita, papel timbrado, modelos de redes sociais e diretrizes de marca.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_wc0lfj5g.json"
+                      background="transparent" speed="1" style="width: 400px; height: 400px;" hover loop
+                      autoplay></lottie-player>
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">Quais serão os prazos do meu projeto?</span>
+                          <span class="rc">Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        Como explicado anteriormente, os prazos podem variar de acordo com a complexidade. Nós criamos
+                        várias versões e enviamos para o cliente, o tempo para aprovação
+                        também influencia no prazo de entrega do produto final. Em suma, a criação de uma idadentidade
+                        visual com a Emcosta demora pelo menos 5 dias. Já o desenvolvimento de uma loja
+                        Online a nível do projeto Casa da Fruta pode levar pelo menos 2 semanas para ser desenvolvida.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_wc0lfj5g.json"
+                      background="transparent" speed="1" style="width: 400px; height: 400px;" hover loop
+                      autoplay></lottie-player>
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">Como é feita a entrega da Identidade Visual?</span>
+                          <span class="rc">Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        Entregamos todo o material produzido e arquivos em alta resolução pelo Drive da Emcosta
+                        Workspace. Você pode acessar o Drive em diversos locais nesse site de apresentação.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_wc0lfj5g.json"
+                      background="transparent" speed="1" style="width: 400px; height: 400px;" hover loop
+                      autoplay></lottie-player>
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">Como é o processo para assinar o contrato?</span>
+                          <span class="rc">Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        Ao aceitar nossa proposta, nós iremos desenvolver um contrato sob medida com o setor jurídico da
+                        Emcosta Digital. Esse contrato será revisado por nós e as informações importantes
+                        serão repassadas ao cliente. A assinatura pode ser feita presencialmente ou virtualmente. Fica a
+                        critério do cliente.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_wc0lfj5g.json"
+                      background="transparent" speed="1" style="width: 400px; height: 400px;" hover loop
+                      autoplay></lottie-player>
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">Quais os meios de pagamento?</span>
+                          <span class="rc">Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        Nós aceitamos desde cartões de crédito, débito, Pix ou boleto. O parcelamento pode estar sujeito
+                        aos juros da maquininha ou sistema de pagamento utilizado por nós.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">O que é domínio e hospedagem?</span>
+                          <span class="rc">Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        Um domínio próprio é o endereço da internet que as pessoas usam para acessar seu site, como
+                        "www.seusite.com". Ele é registrado em uma base de dados global chamada WHOIS, e é gerenciado
+                        por empresas de registro de domínio. Essas empresas cobram uma taxa anual para registrar e
+                        manter seu nome de domínio na base de dados.
+
+                        Já a hospedagem de site é o serviço de armazenamento dos arquivos do seu site em um servidor,
+                        para que ele possa ser acessado na internet. As empresas de hospedagem de site cobram uma taxa
+                        mensal ou anual para armazenar e manter seu site no servidor. Essas taxas incluem coisas como
+                        manutenção do servidor, suporte técnico, backup de dados e garantia de disponibilidade.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_wc0lfj5g.json"
+                      background="transparent" speed="1" style="width: 400px; height: 400px;" hover loop
+                      autoplay></lottie-player>
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">Como será feito o Checkout da minha loja?</span>
+                          <span class="rc">Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        Nossa equipe identificou que, pelo menos pro enquanto, seus clientes vão finalizar os pedidos e
+                        pagamentos direto pelo WhatsApp. Eles entram no site, escolhem os produtos, colocam no carrinho
+                        tudo
+                        aquilo que desejam comprar e ao finalizar, uma lista com informações de contato, endereço e
+                        pedido do cliente é enviada até o WhatsApp da loja para que o atendente possa retirar os itens,
+                        cobrar e entregar.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="i hh rm sg vk xm bi qj">
+                  <!-- Border Shape -->
+                  <span class="rc je md/2 gh xg h q r"></span>
+                  <span class="rc je md/2 mh yg h q p"></span>
+
+                  <div class="tc sf rn tn un zf dp">
+                    <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_wc0lfj5g.json"
+                      background="transparent" speed="1" style="width: 400px; height: 400px;" hover loop
+                      autoplay></lottie-player>
+                    <div>
+                      <img src="images/icon-quote.svg" alt="Quote" />
+                      <div class="tc yf vf">
+                        <div>
+                          <span class="rc ek xj kk wm zb">O que é responsividade?</span>
+                          <span class="rc">(Final) Perguntas Frequêntes</span>
+                        </div>
+                      </div>
+                      <p class="ek ik xj _p kc fb">
+                        Responsividade é a capacidade de um site ou aplicativo se adaptar automaticamente às diferentes
+                        dimensões de tela e dispositivos, garantindo que o conteúdo seja exibido de forma clara e
+                        legível. Isso é conseguido com o uso de técnicas de design responsivo, como CSS e media queries.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- If we need navigation -->
+            <div class="tc wf xf fg jb">
+              <div class="swiper-button-prev c tc wf xf ie ld rg _g dh pf ml vr hh rm tl zm rl ym">
+                <svg class="th lm" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M3.52366 7.83336L7.99366 12.3034L6.81533 13.4817L0.333663 7.00002L6.81533 0.518357L7.99366 1.69669L3.52366 6.16669L13.667 6.16669L13.667 7.83336L3.52366 7.83336Z"
+                    fill="" />
+                </svg>
+              </div>
+              <div class="swiper-button-next c tc wf xf ie ld rg _g dh pf ml vr hh rm tl zm rl ym">
+                <svg class="th lm" width="14" height="14" viewBox="0 0 14 14" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z"
+                    fill="" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Testimonials End ===== -->
+
+    <!-- ===== Pricing Table Start ===== -->
+    <section id="orçamento" x-data="setup()" class="i pg fh rm ji gp uq">
+      <!-- Bg Shapes -->
+      <img src="images/shape-06.svg" alt="Shape" class="h aa y" />
+      <img src="images/shape-03.svg" alt="Shape" class="h ca u" />
+      <img src="images/shape-07.svg" alt="Shape" class="h w da ee" />
+      <img src="images/shape-12.svg" alt="Shape" class="h p s" />
+      <img src="images/shape-13.svg" alt="Shape" class="h r q" />
+
+      <!-- Section Title Start -->
+      <div
+        x-data="{ sectionTitle: `Não geramos despesas. Geramos investimentos.`, sectionTitleText: `Elaboramos seu orçamento balanceando os custos e benefícios. Nossos valores estão abaixo do mercado e você tem direito aos descontos condicionais.`}">
+        <div class="responsive animate_top bb ze rj ki xn vq">
+          <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+            x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b">
+          </h2>
+          <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
+        </div>
+      </div>
+      <!-- Section Title End -->
+
+      <!-- Pricing switcher -->
+      <div class="tc wf xf jb og">
+        <span class="ek kk wm">Parcelado</span>
+        <button class="i rg gm" x-cloak @click="billPlan == 'monthly' ? billPlan = 'annually' : billPlan = 'monthly'">
+          <div class="fe id bl gh rg xk outline-none"></div>
+          <div class="h vc wf xf ge jd cl jl ml mf hh rg yk ea fa"
+            :class="{ 'ff': billPlan == 'monthly', 'gf': billPlan == 'annually' }"></div>
+        </button>
+        <span class="ek kk wm">À vista</span>
+      </div>
+
+      <!-- Pricing Table -->
+      <div class="bb ze i va ki xn yq bc">
+        <div class="wc qf pn xo jg">
+          <template x-for="(plan, i) in plans" x-key="i">
+            <!-- Pricing Item -->
+            <div class="animate_top rj sg hh sm vk xm hi nj oj">
+              <h4 x-text="plan.name" class="wj kk wm fb"></h4>
+
+              <div class="tc wf xf kg cc">
+                <h2 :class="plan.name == 'Basic' ? 'text-green-500' : ''"
+                  x-text="`$${billPlan == 'monthly' ? plan.price.monthly : plan.price.annually}`" class="fk _j kk wm">
+                </h2>
+                <span x-text="billPlan == 'monthly' ? '/12x' : ''" class="sc ak kk wm"></span>
+              </div>
+
+              <p class="ur dc">Pix • Boleto • Cartão</p>
+
+              <!-- Button -->
+              <a href="https://wa.me/5514991878699?text=Gostaria%20de%20ver%20detalhes%20sobre%20meu%20orçamento." class="ek rg lk ml il gi ri" :class="plan.name == 'Desenvolvimento' ? 'gh sl' : 'mh tl'">
+                Saiba mais
+              </a>
+
+              <!-- Features -->
+              <ul class="tc sf bg ob fb">
+                <template x-for="(feature, i) in plan.features" x-key="i">
+                  <li x-text="feature"></li>
+                </template>
+              </ul>
+
+              <p class="kk wm">Válido até 06/02</p>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Pricing Table End ===== -->
+
+    <!-- ===== Clients Start ===== -->
+    <section class="pj vp mr">
+      <!-- Section Title Start -->
+      <div
+        x-data="{ sectionTitle: `Nosso arsenal para esse projeto.`, sectionTitleText: `Veja só algumas das ferramentas que vamos utilizar para performar o seu pedido.`}">
+        <div class="responsive animate_top bb ze rj ki xn vq">
+          <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+            x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b">
+          </h2>
+          <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
+        </div>
+
+
+      </div>
+      <!-- Section Title End -->
+
+      <div class="bb ze ah ch pm hj xp ki xn 2xl:ud-px-49 bc">
+        <div class="wc rf qn zf cp kq xf wf">
+          <a href="#" class="rc animate_top">
+            <img class="th wl ml il zl om" src="images/wordpress-light.png" alt="Clients" />
+            <img class="xc sk ml il zl nm" src="images/wordpress-dark.png" alt="Clients" />
+          </a>
+          <a href="#" class="rc animate_top">
+            <img class="tk ml il zl om" src="images/elementor-light.png" alt="Clients" />
+            <img class="xc sk ml il zl nm" src="images/elementor-dark.png" alt="Clients" />
+          </a>
+          <a href="#" class="rc animate_top">
+            <img class="tk ml il zl om" src="images/adobe-light.png" alt="Clients" />
+            <img class="xc sk ml il zl nm" src="images/adobe-dark.png" alt="Clients" />
+          </a>
+          <a href="#" class="rc animate_top">
+            <img class="tk ml il zl om" src="images/google-light.png" alt="Clients" />
+            <img class="xc sk ml il zl nm" src="images/google-dark.png" alt="Clients" />
+          </a>
+          <a href="#" class="rc animate_top">
+            <img class="tk ml il zl om" src="images/openai-light.png" alt="Clients" />
+            <img class="xc sk ml il zl nm" src="images/openai-dark.png" alt="Clients" />
+          </a>
+          <a href="#" class="rc animate_top">
+            <img class="tk ml il zl om" src="images/envato-light.png" alt="Clients" />
+            <img class="xc sk ml il zl nm" src="images/envato-dark.png" alt="Clients" />
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Clients End ===== -->
+
+    <!-- ===== Blog Start ===== -->
+    <section class="ji gp uq">
+      <!-- Section Title Start -->
+      <div
+        x-data="{ sectionTitle: `Aprimore seu comércio com outros serviços da Emcosta`, sectionTitleText: `Antes de tudo, somos uma empresa do Marketing Digital e também podemos te ajudar a expandir seu alcance na Internet.`}">
+        <div class="responsive animate_top bb ze rj ki xn vq">
+          <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+            x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b">
+          </h2>
+          <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
+        </div>
+
+
+      </div>
+      <!-- Section Title End -->
+
+      <div class="bb ye ki xn vq jb jo">
+        <div class="wc qf pn xo zf iq">
+          <!-- Blog Item -->
+          <div class="animate_top sg vk rm xm">
+            <div class="c rc i z-1 pg">
+              <img class="w-full" src="images/blog-01.png" alt="Blog" />
+
+              <div class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10">
+                <a target="_blank"
+                  href="https://www.youtube.com/watch?v=pNk_cCKDoCM&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=6"
+                  class="vc ek rg lk gh sl ml il gi hi">Saiba Mais</a>
+              </div>
+            </div>
+
+            <div class="yh">
+              <div class="tc uf wf ag jq">
+                <div class="tc wf ag">
+                  <img src="images/icon-man.svg" alt="User" />
+                  <p>Júlio</p>
+                </div>
+                <div class="tc wf ag">
+                  <img src="images/icon-calender.svg" alt="Calender" />
+                  <p>Social Media</p>
+                </div>
+              </div>
+              <h4 class="ek tj ml il kk wm xl eq lb">
+                <a style="letter-spacing: -0.05em; font-size: 1.2em;" target="_blank"
+                  href="https://www.youtube.com/watch?v=pNk_cCKDoCM&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=6">Cresça
+                  nas Redes
+                  Sociais</a>
+              </h4>
+            </div>
+          </div>
+
+          <!-- Blog Item -->
+          <div class="animate_top sg vk rm xm">
+            <div class="c rc i z-1 pg">
+              <img class="w-full" src="images/blog-02.png" alt="Blog" />
+
+              <div class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10">
+                <a target="_blank"
+                  href="https://www.youtube.com/watch?v=AMHMNCVcQOY&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=2"
+                  class="vc ek rg lk gh sl ml il gi hi">Saiba Mais</a>
+              </div>
+            </div>
+
+            <div class="yh">
+              <div class="tc uf wf ag jq">
+                <div class="tc wf ag">
+                  <img src="images/icon-man.svg" alt="User" />
+                  <p>Elza</p>
+                </div>
+                <div class="tc wf ag">
+                  <img src="images/icon-calender.svg" alt="Calender" />
+                  <p>Gestão de Trafego</p>
+                </div>
+              </div>
+              <h4 class="ek tj ml il kk wm xl eq lb">
+                <a style="letter-spacing: -0.05em; font-size: 1.2em;" target="_blank"
+                  href="https://www.youtube.com/watch?v=AMHMNCVcQOY&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=2">Apareça
+                  no Google para
+                  seus clientes</a>
+              </h4>
+            </div>
+          </div>
+
+          <!-- Blog Item -->
+          <div class="animate_top sg vk rm xm">
+            <div class="c rc i z-1 pg">
+              <img class="w-full" src="images/blog-03.png" alt="Blog" />
+
+              <div class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10">
+                <a target="_blank"
+                  href="https://www.youtube.com/watch?v=X_26-rAOJRI&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=2"
+                  class="vc ek rg lk gh sl ml il gi hi">Saiba Mais</a>
+              </div>
+            </div>
+
+            <div class="yh">
+              <div class="tc uf wf ag jq">
+                <div class="tc wf ag">
+                  <img src="images/icon-man.svg" alt="User" />
+                  <p>Brenda</p>
+                </div>
+                <div class="tc wf ag">
+                  <img src="images/icon-calender.svg" alt="Calender" />
+                  <p>Conduta do Cliente</p>
+                </div>
+              </div>
+              <h4 class="ek tj ml il kk wm xl eq lb">
+                <a style="letter-spacing: -0.05em; font-size: 1.2em;" target="_blank"
+                  href="https://www.youtube.com/watch?v=X_26-rAOJRI&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=2">Importância
+                  do
+                  comportamento correto</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Blog End ===== -->
+
+    <!-- ===== Counter Start ===== -->
+    <section class="i pg qh rm ji hp">
+      <img src="images/shape-11.svg" alt="Shape" class="of h ga ha ke" />
+      <img src="images/shape-07.svg" alt="Shape" class="h ia o ae jf" />
+      <img src="images/shape-14.svg" alt="Shape" class="h ja ka" />
+      <img src="images/shape-15.svg" alt="Shape" class="h q p" />
+
+      <div class="bb ze i va ki xn br">
+        <div class="tc uf sn tn xf un gg">
+          <div class="animate_top me/5 ln rj">
+            <h2 class="gk vj zp or kk wm hc">3</h2>
+            <p class="ek bk aq">Desenvolvedores recrutados</p>
+          </div>
+          <div class="animate_top me/5 ln rj">
+            <h2 class="gk vj zp or kk wm hc">2</h2>
+            <p class="ek bk aq">Designers recrutados</p>
+          </div>
+          <div class="animate_top me/5 ln rj">
+            <h2 class="gk vj zp or kk wm hc">+10</h2>
+            <p class="ek bk aq">Ferramentas necessárias</p>
+          </div>
+          <div class="animate_top me/5 ln rj">
+            <h2 class="gk vj zp or kk wm hc">25 Jn.</h2>
+            <p class="ek bk aq">Ultima atualização</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Counter End ===== -->
+
+    <!-- ===== Contact Start ===== -->
+    <section id="suporte" class="i pg fh rm ji gp uq">
+      <!-- Bg Shapes -->
+      <img src="images/shape-06.svg" alt="Shape" class="h aa y" />
+      <img src="images/shape-03.svg" alt="Shape" class="h ca u" />
+      <img src="images/shape-07.svg" alt="Shape" class="h w da ee" />
+      <img src="images/shape-12.svg" alt="Shape" class="h p s" />
+      <img src="images/shape-13.svg" alt="Shape" class="h r q" />
+
+      <!-- Section Title Start -->
+      <div
+        x-data="{ sectionTitle: `Informações de contato`, sectionTitleText: `Permaneça conectado com a equipe da Emcosta Digital`}">
+        <div class="responsive animate_top bb ze rj ki xn vq">
+          <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+            x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b">
+          </h2>
+          <p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p>
+        </div>
+
+
+      </div>
+      <!-- Section Title End -->
+
+      <div class="i va bb ye ki xn wq jb mo">
+        <div class="tc uf sn tf rn un zf xl:gap-10">
+          <div class="animate_top w-full mn/5 to/3 vk sg hh sm yh rq i pg">
+            <!-- Bg Shapes -->
+            <img src="images/shape-03.svg" alt="Shape" class="h la x wd" />
+            <img src="images/shape-06.svg" alt="Shape" class="h la ma ne kf" />
+
+            <div class="fb">
+              <h4 class="wj kk wm cc">Email</h4>
+              <p><a href="#">suporte@emcosta.com.br</a></p>
+            </div>
+            <div class="fb">
+              <h4 class="wj kk wm cc">Funcionamento</h4>
+              <p>Segunda a Sexta - Exceto feriados</p>
+            </div>
+            <div class="fb">
+              <h4 class="wj kk wm cc">Telefones</h4>
+              <p><a href="https://wa.me/5514991878699">+55 14 99187-8699 <br>
+                  +55 14 99885-4798 <br>
+                  +55 14 98127-9119</a></p>
+            </div>
+            <div class="fb">
+              <h4 class="wj kk wm cc">Horários de Atendimento</h4>
+              <p><a href="https://wa.me/5514991878699">A partir das 17:30h</a></p>
+            </div>
+
+            <span class="rc nd rh tm lc fb"></span>
+          </div>
+
+          <div class="animate_top w-full nn/5 vo/3 vk sg hh sm yh tq">
+            <form action="" method="POST">
+              <div class="tc sf yo ap zf ep qb">
+                <div class="vd to/2">
+                  <label class="rc ac" for="fullname">Nome e sobrenome</label>
+                  <input type="text" name="fullname" id="fullname" placeholder="Guilherme"
+                    class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 xi mi" />
+                </div>
+
+                <div class="vd to/2">
+                  <label class="rc ac" for="email">Email principal</label>
+                  <input type="email" name="email" id="email" placeholder="exemplo@gmail.com"
+                    class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 xi mi" />
+                </div>
+              </div>
+
+              <div class="tc sf yo ap zf ep qb">
+                <div class="vd to/2">
+                  <label class="rc ac" for="phone">Número de WhatsApp</label>
+                  <input type="text" name="phone" id="phone" placeholder="Telefone com DDD"
+                    class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 xi mi" />
+                </div>
+
+                <div class="vd to/2">
+                  <label class="rc ac" for="subject">Site pessoal</label>
+                  <input type="text" for="subject" id="subject" placeholder="URL do site"
+                    class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 xi mi" />
+                </div>
+              </div>
+
+              <div class="fb">
+                <label class="rc ac" for="message">Sua mensagem</label>
+                <textarea placeholder="Forneça detalhes..." rows="4" name="message" id="message"
+                  class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 ci"></textarea>
+              </div>
+            </form>
+            <div class="tc xf">
+              <a target="_blank" href="https://forms.gle/nMtxu4EKkCaXHjYL9">
+                <span class="vc rg lk gh ml il hi gi _l">Enviar dados</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Contact End ===== -->
+
+    <!-- ===== CTA Start ===== -->
+    <section class="i pg gh ji">
+      <!-- Bg Shape -->
+      <img class="h p q" src="images/shape-16.svg" alt="Bg Shape" />
+
+      <div class="bb ye i z-10 ki xn dr">
+        <div class="tc uf sn tn un gg">
+          <div class="responsive animate_left to/2">
+            <h2 style="font-family: 'DM Sans', sans-serif; letter-spacing: -0.2rem;"
+              class="fk vj zp pr lk ac">
+              Finalizando nossa apresentação.
+            </h2>
+            <p class="lk">
+              Se você chegou até aqui, aguardamos atenciosamente sua resposta. A seguir, nossa porta-voz, Elza, irá
+              te contar o que você deve fazer.
+            </p>
+          </div>
+          <div class="animate_right bf">
+            <a target="_blank" href="https://www.youtube.com/watch?v=NUwfbqqBVc0" class="vc ek kk hh rg ol il cm gi hi">
+              Falar com Elza
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA End ===== -->
+  </main>
+  <!-- ===== Footer Start ===== -->
+  <footer>
+    <div class="bb ze ki xn 2xl:ud-px-0">
+      <!-- Footer Top -->
+      <div class="ji gp">
+        <div class="tc uf ap gg fp">
+          <div class="animate_top zd/2 to/4">
+            <a href="home.html">
+              <img src="images/logo-light.png" alt="Logo" class="om" />
+              <img src="images/logo-dark.png" alt="Logo" class="xc nm" />
+            </a>
+
+            <p class="lc fb">Site para fins exclusivos de apresentação pessoal. <br><br>
+              É proíbida qualquer tentativa de utilização comercial ou compartilhamento do conteúdo aqui apresentado.
+            </p>
+          </div>
+
+          <div class="vd ro tc sf rn un gg vn">
+            <div class="animate_top">
+              <h4 class="kk wm tj ec">Links Rápidos</h4>
+
+              <ul>
+                <li><a href="home.html" class="sc xl vb">Inicio</a></li>
+                <li><a href="#resumo" class="sc xl vb">Resumo</a></li>
+                <li>
+                  <a href="#planejamento" class="sc xl vb">
+                    Sua Loja Online
+                  </a>
+                </li>
+                <li><a href="#orçamento" class="sc xl vb">Orçamento</a></li>
+              </ul>
+            </div>
+
+            <div class="animate_top">
+              <h4 class="kk wm tj ec">Vídeos</h4>
+
+              <ul>
+                <li><a target="_blank" href="https://youtu.be/ohuk5pmMA7Y" class="sc xl vb">1 · Júlio</a></li>
+                <li><a target="_blank"
+                    href="https://www.youtube.com/watch?v=5fEoTXdYxos&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=7"
+                    class="sc xl vb">2 · Fabio</a></li>
+                <li><a target="_blank"
+                    href="https://www.youtube.com/watch?v=Su5dZ-Tkjwg&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=6"
+                    class="sc xl vb">3 · Brenda</a></li>
+                <li><a target="_blank"
+                    href="https://www.youtube.com/watch?v=pNk_cCKDoCM&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=6"
+                    class="sc xl vb">4 · Júlio</a></li>
+                <li><a target="_blank"
+                    href="https://www.youtube.com/watch?v=AMHMNCVcQOY&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=2"
+                    class="sc xl vb">5 · Elza</a></li>
+                <li><a target="_blank"
+                    href="https://www.youtube.com/watch?v=X_26-rAOJRI&list=PL2g--S9VUJh6s75kWQ18esq_LfGulvXXE&index=2"
+                    class="sc xl vb">6 · Brenda</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=NUwfbqqBVc0" class="sc xl vb">7 · Elza</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="animate_top">
+              <h4 class="kk wm tj ec">Emcosta Digital</h4>
+
+              <ul>
+                <li><a href="https://emcosta.com.br" class="sc xl vb">Site Oficial</a></li>
+                <li><a href="#"
+                    class="sc xl vb">Drive do Projeto</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Top -->
+
+      <!-- Footer Bottom -->
+      <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
+        <div class="animate_top">
+          <ul class="tc wf gg">
+            <li><a href="#" class="xl">Conteúdos protegidos por direitos. Acesso exclusivo do cliente.</a></li>
+          </ul>
+        </div>
+
+        <div class="animate_top">
+          <p>&copy; 2023 E=mc². Powered by OpenAI & D-ID Studio</p>
+        </div>
+      </div>
+      <!-- Footer Bottom -->
+    </div>
+  </footer>
+
+  <!-- ===== Footer End ===== -->
+
+  <!-- ====== Back To Top Start ===== -->
+  <button class="xc wf xf ie ld vg sr gh tr g sa ta _a" @click="window.scrollTo({top: 0, behavior: 'smooth'})"
+    @scroll.window="scrollTop = (window.pageYOffset > 50) ? true : false" :class="{ 'uc' : scrollTop }">
+    <svg class="uh se qd" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+    </svg>
+  </button>
+
+  <!-- ====== Back To Top End ===== -->
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+  <script>
+    //  Pricing Table
+    const setup = () => {
+      return {
+        isNavOpen: false,
+
+        billPlan: 'monthly',
+
+        plans: [
+          {
+            name: 'Design',
+            price: {
+              monthly: Math.trunc(650/12),
+              annually: 0,
+            },
+            features: ['Criação de Logotipo', 'Arquivos em Alta Resolução', 'Tipografia e Peleta'],
+          },
+          {
+            name: 'Desenvolvimento',
+            price: {
+              monthly: Math.trunc(4893.79/12),
+              annually: 0,
+            },
+            features: ['Criação do Site & Páginas', 'Configurações de Setup', 'Integração do Checkout'],
+          },
+          {
+            name: 'Desenvolvimento + Design',
+            price: {
+              monthly: Math.trunc(5543.79/12),
+              annually: 5543.79 - 554.37,
+            },
+            features: ['Identidade Visual', 'Site Loja Online', 'Manutenções'],
+          },
+        ],
+      };
+    };
+  </script>
+  <script defer src="bundle.js"></script>
+</body>
+
+</html>
